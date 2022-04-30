@@ -16,23 +16,24 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 app.use(express.json())
+
 app.use('/', express.static(path.join(__dirname, 'public/index.html')))
 app.use('/styles', express.static(path.join(__dirname, 'public/index.css')))
 app.use('/js', express.static(path.join(__dirname, 'public/index.js')))
 
 
 app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'))
+    res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully.')
 })
 
 app.get('/styles', (req,res) => {
-    res.sendFile(path.join(__dirname, './public/index.css'))
+    res.sendFile(path.join(__dirname, '/public/index.css'))
     rollbar.info('css file served successfully.')
 })
 
 app.get('/js', (req,res) => {
-    res.sendFile(path.join(__dirname, './public/index.js'))
+    res.sendFile(path.join(__dirname, '/public/index.js'))
     rollbar.info('js file served successfully.')
 })
 
